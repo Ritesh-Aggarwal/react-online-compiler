@@ -3,7 +3,7 @@ import axios from "axios";
 
 function Navbar({ Code, setCode, starterCode }) {
   function handleRun() {
-    if (Code.language === "cpp") {
+    if (Code.language === "cpp" || Code.language === "python" || true) {
       axios.post("/api/code/", Code).then((response) => {
         if (response.status === 200) {
           setCode((p) => ({ ...p, output: response.data.output }));
@@ -16,7 +16,7 @@ function Navbar({ Code, setCode, starterCode }) {
     }
   }
 
-  const languages = ["cpp", "python", "javascript"];
+  const languages = ["cpp", "python", "nodejs"];
 
   return (
     <div className="navbar">

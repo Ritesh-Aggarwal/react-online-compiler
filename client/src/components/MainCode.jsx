@@ -11,7 +11,7 @@ function MainCodeArea({ Code, setCode }) {
     <div className="editor">
       <div>
         <div className="file-name">{`${
-          Code.language === "javascript"
+          Code.language === "nodejs"
             ? "index.js"
             : Code.language === "python"
             ? "main.py"
@@ -22,7 +22,9 @@ function MainCodeArea({ Code, setCode }) {
           width="60vw"
           theme="vs-dark"
           path={Code.language}
-          defaultLanguage={Code.language}
+          defaultLanguage={
+            Code.language === "nodejs" ? "javascript" : Code.language
+          }
           defaultValue={Code.code}
           onChange={handleChange}
         />

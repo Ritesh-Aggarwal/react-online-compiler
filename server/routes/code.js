@@ -3,12 +3,14 @@ const router = express.Router();
 const shell = require("shelljs");
 const path = require("path");
 const fs = require("fs");
+const { clientId, clientSecret } = require("../config/key");
+const request = require("request");
 
 router.get("*", (req, res) => {
   res.send("hello world");
 });
 
-router.post("/", (req, res) => {
+function localCompiler(req) {
   //Create a cpp file with req.body.code codes/code.cpp
   const dirCodes = path.join(__dirname, "codes");
   if (!fs.existsSync(dirCodes)) {
@@ -36,13 +38,39 @@ router.post("/", (req, res) => {
   //Execute the cpp file and save to output.out
   shell.exec(`g++ ${filepath} -o ${outPath}`, (error, stdout, stderr) => {
     if (error) {
-      res.json({ output: stderr });
+      return { output: stderr };
     } else {
       shell.exec(`${outPath} < ${inputPath}`, (error, stdout, stderr) => {
-        if (!error) res.json({ output: stdout || stderr });
+        if (!error) return { output: stdout || stderr };
       });
     }
   });
+}
+
+router.post("/", (req, res) => {
+  // res.json(localCompiler(req));
+  if (req.body.language === "python") req.body.language = "python3";
+  var program = {
+    script: req.body.code,
+    language: req.body.language,
+    stdin: req.body.input,
+    versionIndex: "0",
+    clientId,
+    clientSecret,
+  };
+  request(
+    {
+      url: "https://api.jdoodle.com/v1/execute",
+      method: "POST",
+      json: program,
+    },
+    function (error, response, body) {
+      console.log("error:", error);
+      console.log("statusCode:", response && response.statusCode);
+      console.log("body:", body);
+      return res.json({ output: body.output });
+    }
+  );
 });
 
 module.exports = router;

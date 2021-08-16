@@ -8,8 +8,7 @@ function App() {
     cpp: '#include<iostream>\nusing namespace std;\n\nint main()\n{\n\tcout<<"Hello world!";\n\treturn 0;\n}',
 
     python: "# Python is not supported yet\nprint('Hello World!')",
-    javascript:
-      "//Javascript is not supported yet\nconsole.log('Hello World!');",
+    nodejs: "//Javascript is not supported yet\nconsole.log('Hello World!');",
   };
   const [Code, setCode] = useState({
     language: "cpp",
