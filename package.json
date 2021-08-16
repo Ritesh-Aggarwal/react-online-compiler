@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "Online IDE",
   "main": "server/index.js",
+  "engine": {
+    "node": "14.17.0",
+    "npm": "7.20.5"
+  },
   "scripts": {
     "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "dev": "nodemon server/index.js",
+    "heroku-postbuild" : "NODE_CONFIG_PRODUCTION=false npm install --prefix client && npm run build"
   },
   "author": "Ritesh",
   "license": "ISC",
@@ -13,6 +18,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.13.7",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "shelljs": "^0.8.4"
   }
 }
