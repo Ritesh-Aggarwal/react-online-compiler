@@ -68,7 +68,11 @@ router.post("/", (req, res) => {
       console.log("error:", error);
       console.log("statusCode:", response && response.statusCode);
       console.log("body:", body);
-      return res.json({ output: body.output });
+      return res.json({
+        output: body.output,
+        memory: body.memory,
+        cpuTime: body.cpuTime,
+      });
     }
   );
 });

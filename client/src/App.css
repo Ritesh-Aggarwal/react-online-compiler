@@ -24,6 +24,9 @@
   font-size: large;
   margin-left: 4px;
 }
+.nav-brand:hover {
+  cursor: pointer;
+}
 
 .menu {
   display: flex;
@@ -46,7 +49,7 @@
 }
 
 .editor {
-  margin: 10px 20px;
+  margin: 10px 20px 0 20px;
   display: flex;
 }
 
@@ -109,4 +112,42 @@
 
 .dropdown:hover .dropbtn {
   background-color: #7c43c7;
+}
+
+.footer {
+  background-color: #9e55fc;
+  display: flex;
+  /* flex-grow: 1; */
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-top: auto;
+  height: 20px;
+  padding-left: 10px;
+}
+
+.footer-item {
+  display: flex;
+  margin: 0 15px;
+  padding: 0px 15px;
+}
+
+/* .footer-item:hover {
+  background-color: #7c43c7;
+} */
+
+.footer-sub-item {
+  /* display: flex; */
+  margin: 0 15px;
+  padding: 0px 15px;
+}
+
+.footer-sub-item:hover {
+  background-color: #7c43c7;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
 }
