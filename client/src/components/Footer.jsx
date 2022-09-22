@@ -16,7 +16,7 @@ function Footer({ isLoading, memory, cpuTime }) {
           {cpuTime ? `CPU Time : ${cpuTime} sec` : null}
         </div>
       </div>
-      <a
+      {/* <a
         href="https://github.com/Ritesh-Aggarwal/react-online-compiler"
         target="_blank"
         rel="noreferrer"
@@ -34,7 +34,7 @@ function Footer({ isLoading, memory, cpuTime }) {
             />
           </div>
         </div>
-      </a>
+      </a> */}
     </div>
   );
 }
